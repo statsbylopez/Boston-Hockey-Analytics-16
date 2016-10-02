@@ -50,6 +50,8 @@ brad <- grand.data %>%
            h1 == 3190 | h2 == 3190 | h3 == 3190, 
          away.skaters == 6, home.skaters == 6, 
          etype == "SHOT" | etype == "GOAL"| etype == "MISS" | etype == "BLOCK") %>%
+  
+  ##Updated here to include misses and blocks
   mutate(bos.event = as.numeric((ev.team == "BOS")), 
          corsi.count = 1*bos.event + -1*(1-bos.event),
          cum.corsi = cumsum(corsi.count), 
@@ -163,3 +165,4 @@ p <- ggplot(abilities, aes(x = Team, y = ability)) +
   facet_wrap(~division, scales = "free")
 
 p
+
